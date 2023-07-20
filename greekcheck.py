@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# The structure of this block is heavily based on https://github.com/udapi/udapi-python/blob/master/udapi/block/ud/markbugs.py
+
 import collections
 import logging
 import re
@@ -88,14 +90,9 @@ class GreekCheck(Block):
             if not feats['Tense']:
                 self.log(node, 'finverb-tense', 'VerbForm=Fin but Tense feature is missing.')
 
-        if feats['Degree'] and upos not in ('ADJ', 'ADV'):
-            self.log(node, 'degree-upos',
-                     'Degree=%s upos!=ADJ|ADV (but %s)' % (feats['Degree'], upos))
-
-
     def after_process_document(self, document):
         total = 0
-        message = 'ud.MarkBugs Error Overview:'
+        message = 'GreekCheck Error Overview:'
         for bug, count in sorted(self.stats.items(), key=lambda pair: (pair[1], pair[0])):
             total += count
             message += '\n%20s %10d' % (bug, count)
