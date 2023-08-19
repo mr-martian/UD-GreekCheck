@@ -10,8 +10,11 @@ import unicodedata
 from udapi.core.block import Block
 
 REQUIRED_FEATURE_FOR_UPOS = {
-    'PRON': ['PronType'],
-    'DET': ['PronType'],
+    'NOUN': ['Gender', 'Number', 'Case'],
+    'PROPN': ['Gender', 'Number', 'Case'],
+    'PRON': ['PronType', 'Case', 'Number'],
+    'DET': ['PronType', 'Case', 'Number'],
+    'ADJ': ['Case', 'Number', 'Gender'],
     'NUM': ['NumType'],
     'VERB': ['VerbForm', 'Aspect'],
 }
@@ -80,7 +83,7 @@ class GreekCheck(Block):
             if upos == i_upos:
                 for i_feat in i_feat_list:
                     if not feats[i_feat]:
-                        self.log(node, 'no-' + i_feat, 'upos=%s but %s feature is missing' % (upos, i_feat))
+                        self.log(node, upos+'-no-' + i_feat, 'upos=%s but %s feature is missing' % (upos, i_feat))
 
         if feats['VerbForm'] == 'Fin':
             if upos not in ('VERB', 'AUX'):
