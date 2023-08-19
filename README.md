@@ -24,5 +24,5 @@ This mostly skips checks performed by MarkBugs or the standard validation proces
 |-------|-------------|
 | `unsplit-crasis` | Crasis (identified by breathing mark after a consonant) should be split into MWTs ([issue](https://github.com/unipv-larl/UD4HL/issues/8)) |
 | `non-crasis-mwt` | Non-crasis compounds, such as negative conjunctions, should not be split into MWTs ([issue](https://github.com/unipv-larl/UD4HL/issues/8)) |
-| `no-[feat]` | Requires `PronType` for `PRON|DET`, `NumType` for `NUM`, and `VerbForm` and `Aspect` for `VERB` |
+| `no-[feat]` | Requires `PronType` for `PRON\|DET`, `NumType` for `NUM`, and `VerbForm` and `Aspect` for `VERB` |
 | `finverb-[feat]` | Requires `VerbForm=Fin` to be accompanied by `VERB\|AUX`, `Mood`, and `Tense` |
